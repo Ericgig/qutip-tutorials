@@ -72,7 +72,7 @@ jobs:
         # pip install -r requirements.txt
         # pip install .[runtime_compilation,graphics]
         # cd ..
-        python -m pip install git+@https://github.com/qutip/qutip@${{ matrix.qutip-branch }}
+        python -m pip install git+https://github.com/qutip/qutip@${{ matrix.qutip-branch }}
         python -m pip install git+https://github.com/qutip/qutip-qip
 
         git clone -b master https://github.com/qutip/qutip-qtrl.git
