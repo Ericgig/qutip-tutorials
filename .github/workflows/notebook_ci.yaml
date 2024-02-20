@@ -32,7 +32,7 @@ jobs:
     # Only stop tests for broken file in updated file.
     - uses: gaurav-nelson/github-action-markdown-link-check@v1
       with:
-        use-quiet-mode: 'yes'
+        use-quiet-mode: 'no'
         check-modified-files-only: 'yes'
         base-branch: 'main'
         folder-path: tutorials-v${{ matrix.qutip-version }}
@@ -67,15 +67,10 @@ jobs:
     - name: Install QuTiP
       run: |
         pip install --upgrade pip
-        git clone -b ${{ matrix.qutip-branch }} https://github.com/qutip/qutip.git
-        cd qutip
-        pip install -r requirements.txt -v
-        pip install -e . -v --no-build-isolation
-        cd ..
-        git clone -b master https://github.com/qutip/qutip-qip.git
-        cd qutip-qip
-        pip install -e .
-        cd ..
+        mamba install numpy scipy cython
+        python -m pip install git+https://github.com/qutip/qutip@${{ matrix.qutip-branch }}
+        python -m pip install git+https://github.com/qutip/qutip-qip@${{ matrix.qutip-branch }}
+        
         git clone -b master https://github.com/qutip/qutip-qtrl.git
         cd qutip-qtrl
         # install qutip-qtrl without deps because it requires qutip 5.0.0a1
