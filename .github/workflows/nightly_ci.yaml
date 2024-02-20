@@ -25,7 +25,6 @@ jobs:
       with:
         use-quiet-mode: 'yes'
         folder-path: tutorials-v${{ matrix.qutip-version }}
-      continue-on-error: true
 
     - name: Setup Mambaforge
       uses: conda-incubator/setup-miniconda@v2
@@ -57,7 +56,6 @@ jobs:
     - name: Install QuTiP
       run: |
         pip install --upgrade pip
-        mamba install -r requirements.txt
         python -m pip install git+https://github.com/qutip/qutip@${{ matrix.qutip-branch }}
         python -m pip install git+https://github.com/qutip/qutip-qip
 
