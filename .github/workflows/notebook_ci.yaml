@@ -79,6 +79,8 @@ jobs:
         cd qutip-qtrl
         # install qutip-qtrl without deps because it requires qutip 5.0.0a1
         pip install --no-deps -e .
+        pip list
+        python -c "import qutip; qutip.about()"
 
     - name: Install ffmpeg & LaTeX
       run: |
