@@ -57,15 +57,10 @@ jobs:
     - name: Install QuTiP
       run: |
         pip install --upgrade pip
-        git clone -b ${{ matrix.qutip-branch }} https://github.com/qutip/qutip.git
-        cd qutip
-        pip install -r requirements.txt -v
-        pip install -e . -v --no-build-isolation
-        cd ..
-        git clone -b master https://github.com/qutip/qutip-qip.git
-        cd qutip-qip
-        pip install -e .
-        cd ..
+        mamba install numpy scipy cython
+        python -m pip install git+https://github.com/qutip/qutip@${{ matrix.qutip-branch }}
+        python -m pip install git+https://github.com/qutip/qutip-qip
+
         git clone -b master https://github.com/qutip/qutip-qtrl.git
         cd qutip-qtrl
         # install qutip-qtrl without deps because it requires qutip 5.0.0a1

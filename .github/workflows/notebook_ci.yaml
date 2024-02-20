@@ -69,7 +69,7 @@ jobs:
         pip install --upgrade pip
         mamba install numpy scipy cython
         python -m pip install git+https://github.com/qutip/qutip@${{ matrix.qutip-branch }}
-        python -m pip install git+https://github.com/qutip/qutip-qip@${{ matrix.qutip-branch }}
+        python -m pip install git+https://github.com/qutip/qutip-qip
 
         git clone -b master https://github.com/qutip/qutip-qtrl.git
         cd qutip-qtrl
