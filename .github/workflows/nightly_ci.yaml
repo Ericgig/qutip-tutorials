@@ -57,7 +57,7 @@ jobs:
     - name: Install QuTiP
       run: |
         pip install --upgrade pip
-        mamba install numpy scipy cython
+        mamba install -r requirements.txt
         python -m pip install git+https://github.com/qutip/qutip@${{ matrix.qutip-branch }}
         python -m pip install git+https://github.com/qutip/qutip-qip
 
