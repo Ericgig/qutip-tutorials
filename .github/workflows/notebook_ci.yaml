@@ -69,8 +69,8 @@ jobs:
         pip install --upgrade pip
         git clone -b ${{ matrix.qutip-branch }} https://github.com/qutip/qutip
         cd qutip
-        pip install -r requirements.txt
-        pip install .
+        # pip install -r requirements.txt
+        pip install .[runtime_compilation,graphics]
         cd ..
         # python -m pip install git+@https://github.com/qutip/qutip@${{ matrix.qutip-branch }}
         python -m pip install git+https://github.com/qutip/qutip-qip
