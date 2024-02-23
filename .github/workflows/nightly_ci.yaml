@@ -56,7 +56,11 @@ jobs:
     - name: Install QuTiP
       run: |
         pip install --upgrade pip
-        python -m pip install git+https://github.com/qutip/qutip@${{ matrix.qutip-branch }}
+        git clone -b ${{ matrix.qutip-branch }} https://github.com/qutip/qutip.git
+        cd qutip
+        pip install -r requirements.txt
+        pip install .
+        cd ..
         python -m pip install git+https://github.com/qutip/qutip-qip
 
         git clone -b master https://github.com/qutip/qutip-qtrl.git
